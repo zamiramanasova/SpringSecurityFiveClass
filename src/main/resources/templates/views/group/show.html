@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Show group</title>
+</head>
+<body background="https://img.freepik.com/free-vector/hand-drawn-minimal-background_23-2148999829.jpg?t=st=1649064124~exp=1649064724~hmac=07bdab2f759e489db059ff4c7a2b8ae1ec6250cb10169c6d601849d3254b7d89&w=900.jpg">
+<div align="center" >
+    <h2>Show group</h2>
+    <form action="save" th:action="@{/group/gro/{id}(id=${group.id})}" th:object="${group}" th:method="get">
+        <table border="5" cellpadding="10" style="background-color: bisque">
+            <tr>
+                <td><label for="groupName">name: </label></td>
+                <td><input type="text" th:field="*{groupName}" id="groupName"/></td>
+            </tr>
+            <tr>
+                <td><label for="dateOfStart">dateOfStart: </label></td>
+                <td><input type="text" th:field="*{dateOfStart}" id="dateOfStart"/></td>
+            </tr>
+            <tr>
+                <td><label for="dateOfFinish">dateOfFinish: </label></td>
+                <td><input type="text" th:field="*{dateOfFinish}" id="dateOfFinish"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/group"><button type="button" class="btn btn-warning" style="background-color: burlywood">GROUP</button></a>
+    </center>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Edit Teacher</title>
+</head>
+<body background="https://img.freepik.com/free-photo/hand-painted-watercolor-background_24972-1199.jpg?t=st=1649061567~exp=1649062167~hmac=855120590885a2677bda70409f74c0bb74e085955a109fbfb2ff1d2987100c99&w=900.jpg">
+<div align="center" >
+    <h2>Edit teacher</h2>
+    <form action="save" th:action="@{/teacher/update/{id}(id=${teacher.id})}" th:object="${teacher}" th:method="post">
+        <table border="5" cellpadding="10" style="background-color: burlywood">
+            <tr>
+                <td><label for="course name">Enter course name: </label></td>
+                <td><input type="text" th:field="*{firstName}" id="course name"/></td>
+            </tr>
+            <tr>
+                <td><label for="email">Enter email: </label></td>
+                <td><input type="text" th:field="*{email}" id="email"/></td>
+            </tr>
+            <tr>
+                <td><label for="lastName">Enter lastName: </label></td>
+                <td><input type="text" th:field="*{lastName}" id="lastName"/></td>
+            </tr>
+            <tr>
+                <td><label for="course.id">Enter course.id: </label></td>
+                <td><input type="text" th:field="*{course.id}" id="course.id"/></td>
+            </tr>
+            <tr>
+                <td cosplan="5"><input type="submit" style="background-color: burlywood" value="Update!"/>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/teacher"><button type="button" class="btn btn-warning" style="background-color: burlywood ">Back</button></a>
+    </center>
+</div>
+</body>
+</html>

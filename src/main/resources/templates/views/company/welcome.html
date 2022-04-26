@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/TR/html4/loose.dtd"
+                xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>User Manager</title>
+</head>
+<body background="https://img.freepik.com/free-vector/gradient-luxury-background-style_79603-1787.jpg?t=st=1649064794~exp=1649065394~hmac=7012bfd7830101e741bb76324c0b97c2c8a9c589151ac56cd5ed1f33de8eab8e&w=1060.jpg">
+<div  align="center">
+
+    <div sec:autorize="isAuthenticated()">
+        Welcome <b> <span sec:authentication="name">Username</span></b>
+        <i><span sec:authentication="principal.authorities">Roles</span></i>
+    </div>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="EXIT" style="background-color: burlywood">
+    </form>
+
+    <th:block sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR','USER', 'MANAGER-CREATOR')" th:each="mess : ${messages}">
+        <h1 th:text="${mess}"></h1>
+    </th:block>
+</div>
+
+<br>
+<br>
+<div class="d-grid gap-1" >
+    <center>
+    <a sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR','USER', 'MANAGER-CREATOR')" href="/company"><button type="button" class="test" style="background-color: burlywood">COMPANY</button></a>
+    </center>
+</div>
+<br>
+<br>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR','USER', 'MANAGER-CREATOR')" href="/course"><button type="button" class="btn btn-warning" style="background-color: burlywood">COURSE</button></a>
+    </center>
+</div>
+<br>
+<br>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR','USER', 'MANAGER-CREATOR')" href="/teacher"><button type="button" class="btn btn-warning" style="background-color: burlywood">TEACHER</button></a>
+    </center>
+</div>
+<br>
+<br>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR','USER', 'MANAGER-CREATOR')" href="/group"><button type="button" class="btn btn-warning" style="background-color: burlywood">GROUP</button></a>
+    </center>
+</div>
+<br>
+<br>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR','USER', 'MANAGER-CREATOR')" href="/student"><button type="button" class="btn btn-warning" style="background-color: burlywood">STUDENT</button></a>
+    </center>
+</div>
+</body>
+</html>

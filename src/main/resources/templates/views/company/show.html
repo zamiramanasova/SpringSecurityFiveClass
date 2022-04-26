@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Show company</title>
+</head>
+<body background="https://img.freepik.com/free-vector/abstract-wavy-background-in-light-brown_1108-592.jpg?t=st=1649064484~exp=1649065084~hmac=0f4a67cd4796724eb6c2181d4b9e0bf1c90cd719e608210cc04681c1650849af&w=900.jpg">
+<div align="center" >
+    <h2>Show company</h2>
+    <form action="save" th:action="@{/company/comp/{id}(id=${company.id})}" th:object="${company}" th:method="get">
+        <table border="5" cellpadding="10" style="background-color: blanchedalmond">
+            <tr>
+                <td><label for="companyName">name: </label></td>
+                <td><input type="text" th:field="*{companyName}" id="companyName"/></td>
+            </tr>
+            <tr>
+                <td><label for="locatedCompany">locatedCompany: </label></td>
+                <td><input type="text" th:field="*{locatedCompany}" id="locatedCompany"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/company"><button type="button" class="btn btn-warning" style="background-color: burlywood">COMPANY</button></a>
+    </center>
+</div>
+</body>
+</html>

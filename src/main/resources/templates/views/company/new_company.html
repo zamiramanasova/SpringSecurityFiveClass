@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+    <html  lang="en"  xmlns:th="http://www.thymeleaf.org"
+    >
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>New Company</title>
+    </head>
+<body background="https://img.freepik.com/free-photo/floral-gold-texture-abstract-background_53876-104011.jpg?t=st=1649064484~exp=1649065084~hmac=0586bf66ccdf4ee67c6e6bc7e70c81dcd92f05fb0c5f4988993fb2d0692edcd1&w=900.jpg">
+<div align="center">
+    <h2>New Company</h2>
+    <form action="#" method="post" th:action="@{/company}" th:object="${company}">
+        <table border="5" cellpadding="10" style="background-color: burlywood">
+            <tr>
+                <td><label for="name">companyName: </label></td>
+                <td><input type="text" th:field="*{companyName}" id="name"/></td>
+            </tr>
+            <tr>
+                <td><label for="local">locatedCompany: </label></td>
+                <td><input type="text" th:field="*{locatedCompany}" id="local"/></td>
+            </tr>
+                <td cosplan="5"><input type="submit" style="background-color: burlywood" value="Save!"/>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/company"><button type="button" class="btn btn-warning" style="background-color: burlywood">Back</button></a>
+    </center>
+</div>
+</body>
+</html>

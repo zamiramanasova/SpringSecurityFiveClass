@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html  lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>New Course</title>
+</head>
+<body background="https://img.freepik.com/free-photo/gold-star-beige-tone-background_53876-102520.jpg?t=st=1649064286~exp=1649064886~hmac=b7e27aa7401bd0b59f7c3dedc449d231d98fcd4e9be51fcc2f20e321e8758fb0&w=900.jpg">
+<div align="center">
+    <h2>New Course</h2>
+    <form action="#" method="post" th:action="@{/course}" th:object="${course}">
+        <table border="5" cellpadding="10" style="background-color: bisque">
+            <tr>
+                <td><label for="courseName">courseName: </label></td>
+                <td><input type="text" th:field="*{courseName}" id="courseName"/></td>
+            </tr>
+            <tr>
+                <td><label for="duration">duration: </label></td>
+                <td><input type="text" th:field="*{duration}" id="duration"/></td>
+            </tr>
+            <tr>
+                <td><label for="company.id">company.id: </label></td>
+                <td><input type="text" th:field="*{company.id}" id="company.id"/></td>
+            </tr>
+            <td cosplan="5"><input type="submit" style="background-color: burlywood" value="Save!"/>
+            </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/course"><button type="button" class="btn btn-warning"style="background-color: burlywood">Back</button></a>
+    </center>
+</div>
+</body>
+</html>

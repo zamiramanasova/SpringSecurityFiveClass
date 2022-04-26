@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Edit Student</title>
+</head>
+<body background="https://img.freepik.com/free-photo/gold-heart-neutral-earth-tone-background_53876-97499.jpg?t=st=1649064124~exp=1649064724~hmac=ee9e2a200261313aa2735e4c5407b6e5f8a71a47f10d4db16835515f73b57714&w=900.jpg">
+<div align="center" >
+    <h2>Edit student</h2>
+    <form action="save" th:action="@{/student/update/{id}(id=${student.id})}" th:object="${student}" th:method="post">
+        <table border="5" cellpadding="10" style="background-color: burlywood">
+            <tr>
+                <td><label for="firstName">firstName: </label></td>
+                <td><input type="text" th:field="*{firstName}" id="firstName"/></td>
+            </tr>
+            <tr>
+                <td><label for="email">email: </label></td>
+                <td><input type="text" th:field="*{email}" id="email"/></td>
+            </tr>
+            <tr>
+                <td><label for="lastName">lastName: </label></td>
+                <td><input type="text" th:field="*{lastName}" id="lastName"/></td>
+            </tr>
+            <tr>
+                <td><label for="studyFormat">studyFormat: </label></td>
+                <td><input type="text" th:field="*{studyFormat}" id="studyFormat"/></td>
+            </tr>
+            <tr>
+                <td><label for="group.id">group.id: </label></td>
+                <td><input type="text" th:field="*{group.id}" id="group.id"/></td>
+            </tr>
+            <tr>
+                <td cosplan="5"><input type="submit" style="background-color: burlywood" value="Update!"/>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/student"><button type="button" class="btn btn-warning" style="background-color: burlywood">Back</button></a>
+    </center>
+</div>
+
+</body>
+</html>

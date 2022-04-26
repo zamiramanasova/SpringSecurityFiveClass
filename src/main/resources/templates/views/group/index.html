@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/TR/html4/loose.dtd"
+                xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Group</title>
+</head>
+<body background="https://img.freepik.com/free-photo/gold-rose-on-brown-earth-tone-background_53876-104012.jpg?t=st=1649064246~exp=1649064846~hmac=25b50a834d6cb99df76f8248e99562f3be4f762c90be3d0920290f68d2160a6d&w=900.jpg">
+<div align="center">
+
+    <div sec:autorize="isAuthenticated()">
+        <h3>Welcome</h3> <b> <span sec:authentication="name">Username</span></b>
+        <i><span sec:authentication="principal.authorities"><h3>Roles</h3></span></i>
+    </div>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="EXIT" style="background-color: burlywood">
+</form>
+
+    <h3><a sec:authorize="hasAnyAuthority('DIRECTOR','MANAGER-CREATOR')" href="/group/new">New group</a></h3>
+    <table border="5" cellpadding="10" style="background-color: burlywood">
+        <tr>
+            <th>ID</th>
+            <th>Group name</th>
+            <th>Group dateOfStart</th>
+            <th>Group dateOfFinish</th>
+            <th>Course id</th>
+            <th sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR')">Action</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="group : ${groupList}">
+            <td><a th:href="@{/group/gro/{id}(id=${group.id})}" th:text="${group.id}"></a></td>
+            <td th:text="${group.groupName}"></td>
+            <td th:text="${group.dateOfStart}"></td>
+            <td th:text="${group.dateOfFinish}"></td>
+            <td th:text="${group.courses}"></td>
+
+            <td sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR')">
+                <a th:href="@{/group/edit/{id}(id=${group.id})}">Edit</a>
+                <a sec:authorize="hasAnyAuthority('DIRECTOR')" th:href="@{/group/delete/{id}(id=${group.id})}">Delete</a>
+            </td>
+            <td>
+                <a href="/course"><button type="button" style="background-color: burlywood" class="btn btn-warning">Course</button></a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/"><button type="button" class="btn btn-warning" style="background-color: burlywood">Main Page</button></a>
+    </center>
+</div>
+</body>
+</html>

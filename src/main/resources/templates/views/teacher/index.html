@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/TR/html4/loose.dtd"
+                xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Teacher</title>
+</head>
+<body background="https://img.freepik.com/free-photo/neutral-abstract-background-with-gold-stars-glitter_53876-97489.jpg?t=st=1649061567~exp=1649062167~hmac=cff0483b706d26f0b566da08f38c278b055bc63e6e0a61294c54890b48cbf35a&w=900.jpg">
+<div align="center">
+
+    <div sec:autorize="isAuthenticated()">
+        <h3>Welcome</h3> <b> <span sec:authentication="name">Username</span></b>
+        <i><span sec:authentication="principal.authorities"><h3>Roles</h3></span></i>
+    </div>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="EXIT" style="background-color: burlywood">
+    </form>
+
+    <h2>Teacher</h2>
+    <h3><a sec:authorize="hasAnyAuthority('DIRECTOR', 'MANAGER-CREATOR')" href="/teacher/new">New teacher</a></h3>
+    <table border="4" cellpadding="8" style="background-color: burlywood">
+        <tr>
+            <th>ID</th>
+            <th>Teacher name</th>
+            <th>Teacher email</th>
+            <th>Teacher lastName</th>
+            <th>Course id</th>
+            <th sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR')">Action</th>
+        </tr>
+        <tr th:each="teacher : ${teacherList}">
+            <td><a th:href="@{/teacher/teach/{id}(id=${teacher.id})}" th:text="${teacher.id}"></a></td>
+            <td th:text="${teacher.firstName}"></td>
+            <td th:text="${teacher.email}"></td>
+            <td th:text="${teacher.lastName}"></td>
+            <td th:text="${teacher.course.id}"></td>
+
+            <td sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR')">
+                <a th:href="@{/teacher/edit/{id}(id=${teacher.id})}">Edit</a>
+                <a sec:authorize="hasAnyAuthority('DIRECTOR')" th:href="@{/teacher/delete/{id}(id=${teacher.id})}">Delete</a>
+            </td>
+            <td>
+                <a href="/course"><button type="button" style="background-color: burlywood" class="btn btn-warning">Course</button></a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/"><button type="button" class="btn btn-warning" style="background-color: burlywood">Main Page</button></a>
+    </center>
+</div>
+</body>
+</html>
