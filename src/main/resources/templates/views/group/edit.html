@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Edit Group</title>
+</head>
+<body background="https://img.freepik.com/free-vector/hand-drawn-minimal-background_23-2149001650.jpg?t=st=1649064286~exp=1649064886~hmac=9f2b60af74759ff7656ce3c61e0e072988506e6fb2c011a721002d21f5dd4878&w=900.jpg">
+<div align="center" >
+    <h2>Edit group</h2>
+    <form action="save" th:action="@{/group/update/{id}(id=${group.id})}" th:object="${group}" th:method="post">
+        <table border="5" cellpadding="10" style="background-color: bisque">
+            <tr>
+                <td><label for="groupName">Enter name: </label></td>
+                <td><input type="text" th:field="*{groupName}" id="groupName"/></td>
+            </tr>
+            <tr>
+                <td><label for="dateOfStart">Enter dateOfStart: </label></td>
+                <td><input type="text" th:field="*{dateOfStart}" id="dateOfStart"/></td>
+            </tr>
+            <tr>
+                <td><label for="dateOfFinish">Enter dateOfFinish: </label></td>
+                <td><input type="text" th:field="*{dateOfFinish}" id="dateOfFinish"/></td>
+            </tr>
+            </tr>
+            <td><label for="courseID">courseID: </label></td>
+            <td><input type="text" th:field="*{courses}" id="courseID"/></td>
+            </tr>
+            <tr>
+                <td cosplan="5"><input type="submit" style="background-color: burlywood" value="Update!"/>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/group"><button type="button" class="btn btn-warning" style="background-color: burlywood">Back</button></a>
+    </center>
+</div>
+</body>
+</html>

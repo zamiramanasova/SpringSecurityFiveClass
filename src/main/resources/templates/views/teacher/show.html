@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Show Teacher</title>
+</head>
+<body background="https://img.freepik.com/free-photo/neutral-abstract-texture-minimal-background_53876-98402.jpg?t=st=1649061567~exp=1649062167~hmac=38fb4166c4e445949ec9f14dc1404689ed743b30d64156c47d7b575e8399e314&w=1060.jpg">
+<div align="center" >
+    <h2>Show teacher</h2>
+    <form action="save" th:action="@{/teacher/teach/{id}(id=${teacher.id})}" th:object="${teacher}" th:method="get">
+        <table border="3" cellpadding="5" style="background-color: burlywood">
+            <tr>
+                <td><label for="firstName">firstName: </label></td>
+                <td><input type="text" th:field="*{firstName}" id="firstName"/></td>
+            </tr>
+            <tr>
+                <td><label for="email">email: </label></td>
+                <td><input type="text" th:field="*{email}" id="email"/></td>
+            </tr>
+            <tr>
+                <td><label for="lastName">lastName: </label></td>
+                <td><input type="text" th:field="*{lastName}" id="lastName"/></td>
+            </tr>
+            <tr>
+                <td><label for="course.id">course.id: </label></td>
+                <td><input type="text" th:field="*{course.id}" id="course.id"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/teacher"><button type="button" class="btn btn-warning" style="background-color: burlywood">TEACHER</button></a>
+    </center>
+</div>
+</body>
+</html>

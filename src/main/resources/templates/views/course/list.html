@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/TR/html4/loose.dtd"
+                xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Course</title>
+</head>
+
+<body background="https://img.freepik.com/free-photo/hand-painted-watercolor-background_24972-1205.jpg?t=st=1649064390~exp=1649064990~hmac=925885af7cd4f638616522c387192b335831effccde425647361566d5aa55776&w=900.jpg">
+<div align="center">
+
+    <div sec:autorize="isAuthenticated()">
+        <h3>Welcome</h3> <b> <span sec:authentication="name">Username</span></b>
+        <i><span sec:authentication="principal.authorities"><h3>Roles</h3></span></i>
+    </div>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="EXIT" style="background-color: burlywood">
+</form>
+
+    <h2>User Course</h2>
+    <h3><a sec:authorize="hasAnyAuthority('DIRECTOR', 'MANAGER-CREATOR')" href="/course/new">New Course</a></h3>
+    <table border="5" cellpadding="10" style="background-color: bisque">
+        <tr>
+            <th>ID</th>
+            <th>Course name</th>
+            <th>Course duration</th>
+            <th>Company id</th>
+            <th  sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR')">Action</th>
+        </tr>
+
+        <tr th:each="course : ${courseList}">
+            <td><a th:href="@{/course/cour/{id}(id=${course.id})}" th:text="${course.id}"></a></td>
+            <td th:text="${course.courseName}"></td>
+            <td th:text="${course.duration}"></td>
+            <td th:text="${course.company.id}"></td>
+            <td sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR')">
+                <a th:href="@{/course/edit/{id}(id=${course.id})}">Edit</a>
+                <a sec:authorize="hasAnyAuthority('DIRECTOR')" th:href="@{/course/delete/{id}(id=${course.id})}">Delete</a>
+            </td>
+            <td>
+                <a href="/company"><button type="button" class="btn btn-warning" style="background-color: burlywood">Company</button></a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/"><button type="button" class="btn btn-warning" style="background-color: burlywood">Main Page</button></a>
+    </center>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml"
+                xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>List Company</title>
+</head>
+<body background="https://img.freepik.com/free-vector/minimalist-style-hand-painted-liquid-background_68708-1725.jpg?w=1060.jpg">
+<div align="center">
+
+    <div sec:autorize="isAuthenticated()">
+        <h3>Welcome</h3> <b> <span sec:authentication="name">Username</span></b>
+        <i><span sec:authentication="principal.authorities"><h3>Roles</h3></span></i>
+    </div>
+       <form th:action="@{/logout}" method="post">
+             <input type="submit" value="EXIT" style="background-color: burlywood">
+       </form>
+
+        <h2>Company</h2>
+        <h3><a sec:authorize="hasAnyAuthority('DIRECTOR', 'MANAGER-CREATOR')" href="/company/new">New Company</a></h3>
+        <table border="4" cellpadding="8" style="background-color: burlywood">
+        <tr>
+            <th>ID</th>
+            <th>Company name</th>
+            <th>Company located</th>
+            <th  sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR')">Action</th>
+        </tr>
+
+        <tr th:each="company : ${companyList}">
+            <td><a th:href="@{/company/comp/{id}(id=${company.id})}" th:text="${company.id}"></a></td>
+            <td th:text="${company.companyName}"></td>
+            <td th:text="${company.locatedCompany}"></td>
+            <td  sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR')">
+                <a th:href="@{/company/edit/{id}(id=${company.id})}">Edit</a>
+                <a sec:authorize="hasAnyAuthority('DIRECTOR')" th:href="@{/company/delete/{id}(id=${company.id})}">Delete</a>
+            </td>
+        </tr>
+        </table>
+    </div>
+    <div class="d-grid gap-1" style="color: dodgerblue">
+        <center>
+        <a href="/"><button type="button" class="btn btn-warning" style="background-color: burlywood">Main Page</button></a>
+        </center>
+    </div>
+</body>
+</html>

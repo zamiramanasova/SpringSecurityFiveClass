@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
+Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/TR/html4/loose.dtd"
+                xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Student</title>
+</head>
+<body background="https://img.freepik.com/free-vector/neutral-soft-abstract-watercolor-background_53876-116090.jpg?t=st=1649063986~exp=1649064586~hmac=d7694523de3ce0f48e74cc6697bbe54b657735b88330d047c016a7c5353a41ca&w=740.jpg">
+<div align="center">
+
+    <div sec:autorize="isAuthenticated()">
+        <h3>Welcome</h3> <b> <span sec:authentication="name">Username</span></b>
+        <i><span sec:authentication="principal.authorities"><h3>Roles</h3></span></i>
+    </div>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="EXIT" style="background-color: burlywood">
+    </form>
+
+    <h2>Student</h2>
+    <form method="get" th:action="@{/student/search/name{name}}" >
+        <input type="text" name="name" style="background-color: burlywood"/>
+        <input type="submit" value="Search student" style="background-color: burlywood"/>
+    </form>
+
+<!--    <h2>Student</h2>-->
+    <h3><a sec:authorize="hasAnyAuthority('DIRECTOR', 'MANAGER-CREATOR')" href="/student/new">New Student</a></h3>
+    <table border="4" cellpadding="8" style="background-color: burlywood">
+        <tr>
+            <th>ID</th>
+            <th>Student name</th>
+            <th>Student email</th>
+            <th>Student lastName</th>
+            <th>Student studyFormat</th>
+            <th>Group id</th>
+            <th sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR')">Action</th>
+        </tr>
+        <tr th:each="student : ${studentList}">
+            <td><a th:href="@{/student/study/{id}(id=${student.id})}" th:text="${student.id}"></a></td>
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.email}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.studyFormat}"></td>
+            <td th:text="${student.group.id}"></td>
+            <td sec:authorize="hasAnyAuthority('DIRECTOR', 'ADMIN-EDITOR')">
+                <a th:href="@{/student/edit/{id}(id=${student.id})}">Edit</a>
+                <a sec:authorize="hasAnyAuthority('DIRECTOR')" th:href="@{/student/delete/{id}(id=${student.id})}">Delete</a>
+            </td>
+            <td>
+                <a href="/group"><button type="button" style="background-color: burlywood" class="btn btn-warning">Group</button></a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/"><button type="button" class="btn btn-warning" style="background-color: burlywood">Main Page</button></a>
+    </center>
+</div>
+</body>
+</html>

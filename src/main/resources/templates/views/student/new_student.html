@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html  lang="en"  xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>New Student</title>
+</head>
+<body background="https://img.freepik.com/free-photo/neutral-abstract-texture-simple-background_53876-102511.jpg?t=st=1649063986~exp=1649064586~hmac=0b4675a1a863d49e0da9d4272c95345198cce896ea73e2baf3c4bc12d97158cf&w=900.jpg">
+<div align="center">
+    <h2>New Student</h2>
+    <form action="#" method="post" th:action="@{/student}" th:object="${student}">
+        <table border="5" cellpadding="10" style="background-color: burlywood">
+            <tr>
+                <td><label for="firstName">firstName: </label></td>
+                <td><input type="text" th:field="*{firstName}" id="firstName"/></td>
+            </tr>
+            <tr>
+                <td><label for="email">email: </label></td>
+                <td><input type="text" th:field="*{email}" id="email"/></td>
+            </tr>
+            <tr>
+                <td><label for="lastName">lastName: </label></td>
+                <td><input type="text" th:field="*{lastName}" id="lastName"/></td>
+            </tr>
+            <tr>
+                <td><label for="studyFormat">studyFormat: </label></td>
+                <td><input type="text" th:items="*{studyFormat}" id="studyFormat"/></td>
+            </tr>
+            <tr>
+                <td><label for="group.id">group.id: </label></td>
+                <td><input type="text" th:field="*{group.id}" id="group.id"/></td>
+            </tr>
+            <td cosplan="5"><input type="submit" style="background-color: burlywood" value="Save!"/>
+            </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/student"><button type="button" class="btn btn-warning" style="background-color: burlywood">Back</button></a>
+    </center>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Search Result</title>
+</head>
+<body background="https://img.freepik.com/free-photo/hand-painted-watercolor-background_24972-1198.jpg?t=st=1649063986~exp=1649064586~hmac=8518aaaf6d68bae076ca9cb601f41cc7ca5f45b3fc0f09bd14a0eb7354cc66f5&w=900.jpg">
+<div align="center">
+    <h2>Search Result</h2>
+    <table border="1" cellpadding="5" style="background-color: burlywood">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+
+        </tr>
+        <tr th:each="student : ${result}">
+
+                <td th:text="${student.id}"></td>
+            <td th:text="${student.firstName}"></td>
+
+            </tr>
+    </table>
+</div>
+<div class="d-grid gap-1" style="color: dodgerblue">
+    <center>
+    <a href="/student"><button type="button" class="btn btn-warning" style="background-color: burlywood">Student</button></a>
+    </center>
+</div>
+
+</body>
+</html>
