@@ -26,7 +26,7 @@ public class Company {
     @Column(name = "company_located")
     private String locatedCompany;
 
-    @OneToMany(cascade = ALL ,
+    @OneToMany(
             fetch = FetchType.LAZY,mappedBy = "company")
     @JsonIgnore
     private List<Course> courseList;

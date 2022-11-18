@@ -26,7 +26,7 @@ public class Course {
     private Company company;
 
     @Transient
-    @OneToOne(mappedBy = "course",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "course", fetch = FetchType.LAZY)
     @JsonIgnore
     private Teacher teacher;
 

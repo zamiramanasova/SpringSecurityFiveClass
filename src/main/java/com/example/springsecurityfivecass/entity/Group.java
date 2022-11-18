@@ -25,7 +25,7 @@ public class Group {
     // @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dateOfFinish;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "groups_course",
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id", referencedColumnName = "id"))
@@ -33,7 +33,7 @@ public class Group {
     private List<Course> courses;
 
 
-    @OneToMany(mappedBy = "group",cascade = CascadeType.ALL,
+    @OneToMany(mappedBy = "group",
             fetch = FetchType.LAZY)
     private List<Student> studentList;
 

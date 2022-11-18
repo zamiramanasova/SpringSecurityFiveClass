@@ -31,6 +31,7 @@ public class GroupService {
         groupRepository.save(group);
         return group;
     }
+
     public Group getById(Long id){
         return groupRepository.findById(id).get();
     }

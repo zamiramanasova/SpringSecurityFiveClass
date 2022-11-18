@@ -31,7 +31,7 @@ public class Student {
 
 
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name="group_id")
     @JsonIgnore
     private Group group;
