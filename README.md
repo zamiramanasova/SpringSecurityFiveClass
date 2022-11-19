@@ -1,20 +1,8 @@
 <div align="center">
-<a href="https://github.com/zamiramanasova/SpringSecurityFiveCass">
-    <img src="static/images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 <h3 align="center">Spring Security Five Classes</h3>
 <p align="center">
     Project with authentication on SpringSecurity
     </p>
-</div>
-
----
-
-<div align="center">
-<h3 align="center">Project photo</h3>
-<a href="https://github.com/zamiramanasova/SpringSecurityFiveCass">
-    <img src="static/images/Снимок экрана (173).png" alt="Logo" width="130" height="100">
-  </a>
 </div>
 
 ---
