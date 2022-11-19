@@ -96,7 +96,7 @@ class CourseServiceTest {
 
     @Test
     @Order(5)
-    @DisplayName("JUnit test for {5} should get all Course")
+    @DisplayName("JUnit test for {5} should get all Courses")
     void shouldGetAllCourse() {
         List<Course> courseList = new ArrayList<>();
         courseList.add(course1);
