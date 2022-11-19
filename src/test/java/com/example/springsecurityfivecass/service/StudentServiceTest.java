@@ -39,7 +39,7 @@ class StudentServiceTest {
     @Test
     @Order(1)
     @DisplayName("JUnit test for {1} should save Student")
-    void save() {
+    void shouldSaveStudentAfterCreate() {
         Mockito.when(studentMappers.mapToEntity(student1)).thenReturn(student1);
         studentService.save(student1);
 
