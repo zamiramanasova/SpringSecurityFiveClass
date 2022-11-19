@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Table(name = "course")
@@ -33,5 +34,8 @@ public class Course {
     @Override
     public String toString() {
         return getCourseName();
+    }
+
+    public void setCompany(Optional<Company> byId) {
     }
 }

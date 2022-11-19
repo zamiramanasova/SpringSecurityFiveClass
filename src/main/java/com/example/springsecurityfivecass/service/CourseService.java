@@ -1,6 +1,7 @@
 package com.example.springsecurityfivecass.service;
 
 import com.example.springsecurityfivecass.entity.Course;
+import com.example.springsecurityfivecass.entity.mappers.CourseMapper;
 import com.example.springsecurityfivecass.repository.CompanyRepository;
 import com.example.springsecurityfivecass.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,14 +14,14 @@ import java.util.List;
 public class CourseService {
 
     private final CourseRepository courserepository;
-    private final CompanyRepository companyRepository;
+    private final CourseMapper courseMapper;
 
     public List<Course> getAllCourse(){
         return courserepository.findAll();
     }
 
     public Course save(Course course){
-        Course course1 = mapToEntity(course);
+        Course course1 = courseMapper.mapToEntity(course);
         courserepository.save(course1);
         return course1;
     }
@@ -34,20 +35,8 @@ public class CourseService {
         return courserepository.findById(id).get();
     }
 
-    public long getByCourseId(Long id){
-        courserepository.findById(id).get();
-        return id;
-    }
-
     public void delete(Long id){
         courserepository.deleteById(id);
     }
 
-    public Course mapToEntity(Course course){
-        Course course1 = new Course();
-        course1.setCourseName(course.getCourseName());
-        course1.setDuration(course.getDuration());
-        course1.setCompany(companyRepository.getById(course.getCompany().getId()));
-        return course1;
-    }
 }
