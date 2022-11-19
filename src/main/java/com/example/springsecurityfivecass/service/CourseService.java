@@ -2,7 +2,6 @@ package com.example.springsecurityfivecass.service;
 
 import com.example.springsecurityfivecass.entity.Course;
 import com.example.springsecurityfivecass.entity.mappers.CourseMapper;
-import com.example.springsecurityfivecass.repository.CompanyRepository;
 import com.example.springsecurityfivecass.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
