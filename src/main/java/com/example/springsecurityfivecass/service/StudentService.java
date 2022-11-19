@@ -1,8 +1,7 @@
 package com.example.springsecurityfivecass.service;
 
-import com.example.springsecurityfivecass.entity.Group;
 import com.example.springsecurityfivecass.entity.Student;
-import com.example.springsecurityfivecass.repository.GroupRepository;
+import com.example.springsecurityfivecass.entity.mappers.StudentMappers;
 import com.example.springsecurityfivecass.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,14 +13,14 @@ import java.util.List;
 public class StudentService {
 
     private final StudentRepository studentRepository;
-    private final GroupRepository groupRepository;
+    private final StudentMappers studentMappers;
 
     public List<Student> getAllStudent(){
         return studentRepository.findAll();
     }
 
     public Student save(Student student){
-        Student student1 = mapToEntity(student);
+        Student student1 = studentMappers.mapToEntity(student);
         studentRepository.save(student1);
         return student1;
     }
@@ -39,15 +38,7 @@ public class StudentService {
         studentRepository.deleteById(id);
     }
 
-    public Student mapToEntity(Student student){
-        Student student1 = new Student();
-        student1.setFirstName(student.getFirstName());
-        student1.setEmail(student.getEmail());
-        student1.setLastName(student.getLastName());
-        student1.setStudyFormat(student.getStudyFormat());
-        student1.setGroup(groupRepository.getById(student.getGroup().getId()));
-        return student1;
-    }
+
 
     // метод поиска студентов
     public Student findStudentsByFirstName(String name){

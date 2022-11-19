@@ -1,16 +1,11 @@
 package com.example.springsecurityfivecass.service;
 
-
-import com.example.springsecurityfivecass.entity.Course;
 import com.example.springsecurityfivecass.entity.Group;
-import com.example.springsecurityfivecass.repository.CourseRepository;
 import com.example.springsecurityfivecass.repository.GroupRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
